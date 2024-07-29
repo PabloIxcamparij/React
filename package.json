@@ -1,0 +1,19 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "Rest API con Express y Typrescript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PabloIxcamparij/Proyecto_React_Cuatro.git"
+  },
+  "author": "Jose Sorto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PabloIxcamparij/Proyecto_React_Cuatro/issues"
+  },
+  "homepage": "https://github.com/PabloIxcamparij/Proyecto_React_Cuatro#readme"
+}
