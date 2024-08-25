@@ -1,8 +1,13 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import dotenv from 'dotenv'
 dotenv.config()
 
-const db = new Sequelize(process.env.Database_URL);
+
+//Forma de agregar los modelos a la base de datos
+
+const db = new Sequelize(process.env.Database_URL, {
+    models : [__dirname + '/../models/**/*.ts']
+});
 
 // Podemos forzar el ssl poniendo al final ?ssl=true
 

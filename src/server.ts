@@ -17,7 +17,13 @@ async function ConnectDB() {
 
 ConnectDB ()
 
+// Instacia de Axios de express
 const server = express()
+
+// Leer datos de formulario, habilita la lectura
+server.use(express.json())
+
+// http://localhost:4000/api/products/
 
 server.use("/api/products", productsRouter)
 
