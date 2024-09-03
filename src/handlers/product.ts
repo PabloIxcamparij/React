@@ -4,7 +4,7 @@ import Product from "../models/Produc.model";
 export const getProduct = async (req: Request, res: Response) => {
   try {
     const products = await Product.findAll();
-    res.json(products);
+    res.json({data: products});
   } catch (error) {
     console.log(error);
   }
@@ -18,8 +18,8 @@ export const getProductById = async (req: Request, res: Response) => {
     if (!products) {
       return res.status(404).json({ error: "Producto no encontrado" });
     }
-
-    res.json(products);
+    
+    res.json({data: products});
 
   } catch (error) {
     console.log(error);
@@ -29,7 +29,7 @@ export const getProductById = async (req: Request, res: Response) => {
 export const createProduct = async (req: Request, res: Response) => {
   try {
     const product = await Product.create(req.body);
-    res.json(product);
+    res.status(201).json({data: product});
   } catch (error) {
     res.status(500).json({ error: "Error creating product" });
   }
@@ -48,7 +48,7 @@ export const updateProductById = async (req: Request, res: Response) => {
     await products.update(req.body)
     await products.save()
 
-    res.json(products);
+    res.json({data: products});
     
   } catch (error) {
     console.log(error);
@@ -67,7 +67,7 @@ export const updateAvailability = async (req: Request, res: Response) => {
 
     products.availability = !products.dataValues.availability
     await products.save()
-    res.json(products);
+    res.json({data: products});
     
   } catch (error) {
     console.log(error);
@@ -86,7 +86,8 @@ export const deleteProduct = async (req: Request, res: Response) => {
     }
 
     await products.destroy()
-    res.json(products);
+    
+    res.json({data: products});
     
   } catch (error) {
     console.log(error);

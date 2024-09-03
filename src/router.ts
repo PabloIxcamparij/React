@@ -10,6 +10,7 @@ import {
   updateAvailability,
   updateProductById,
 } from "./handlers/product";
+
 import { handlerInputErrors } from "./middleware";
 
 const router = Router();
@@ -49,6 +50,8 @@ router.post(
 
 router.put(
   "/:id",
+  param("id").isInt().withMessage("Valor no valido"),
+
   body("name")
     .notEmpty()
     .withMessage("EL nombre de Producto no puede ir vacio"),
@@ -61,14 +64,17 @@ router.put(
     .custom((value) => value > 0)
     .withMessage("Precio no valido"),
 
-  body("availability").isBoolean().withMessage("Valor no valido"),
-
   handlerInputErrors,
 
   updateProductById
 );
 
-router.patch("/:id", updateAvailability);
+router.patch(
+  "/:id",
+  param("id").isInt().withMessage("Valor no valido"),
+  handlerInputErrors,
+  updateAvailability
+);
 
 router.delete(
   "/:id",
