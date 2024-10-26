@@ -87,7 +87,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
 
     await products.destroy()
     
-    res.json({data: products});
+    res.json({message: "Producto eliminado"});
     
   } catch (error) {
     console.log(error);
